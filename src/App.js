@@ -7,7 +7,7 @@ import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faTwitter, faYoutube, faTiktok, faFacebook} from '@fortawesome/free-brands-svg-icons';
 import { useMemo, useState, createContext } from 'react';
-import { showCart, addToShoppingCart, removeAllFromShoppingCart, showCartSmallScreen} from './Shop'
+import { showCart, addToShoppingCart, removeAllFromShoppingCart } from './Shop'
 import { useEffect } from 'react';
 
 function handleSubmit(e) {
@@ -172,7 +172,7 @@ function Deco() {
         <div className='header-container'><h2>Our Products</h2></div>
         <div id='product_container'>
           {prod_gallery.map((pic, i)=> <Gallery pic={pic} id={i} setSub={setSub} setShip={setShip} sub={sub} setNumberOfItems={setNumberOfItems} numberOfItems={numberOfItems} key={i}/>)}{/* beliani.de */}
-          <a id='more' href='' onClick={(e) => { handleSubmit(e) }}><div><strong>See more</strong></div></a>
+          <a id='more' href='#our_products' onClick={(e) => { handleSubmit(e) }}><div><strong>See more</strong></div></a>
         </div>
       </section>
       <section id='reviews'>

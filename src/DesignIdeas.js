@@ -1,7 +1,7 @@
 export default function DesigneIdeas() {
     return(
         <><div id='example1'>
-        <img src='https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg' alt='' loading='lazy'></img>
+        <img src='pics/example-1.jpeg' alt='' loading='lazy'></img>
         <div>
           <h3>Lorem ipsum</h3>
           <p>
@@ -21,7 +21,7 @@ export default function DesigneIdeas() {
         </div>
       </div>
       <div id='example2'>
-        <img src='https://images.pexels.com/photos/1374125/pexels-photo-1374125.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' loading='lazy'></img>
+        <img src='pics/example-2.jpeg' alt='' loading='lazy'></img>
         <div>
           <h3>Lorem ipsum</h3>
           <p>
@@ -41,7 +41,7 @@ export default function DesigneIdeas() {
         </div>
       </div>
       <div id='example3'>
-        <img src='https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg' alt='' loading='lazy'></img>
+        <img src='pics/example-3.jpeg' alt='' loading='lazy'></img>
         <div>
           <h3>Lorem ipsum</h3>
           <p>
@@ -61,7 +61,7 @@ export default function DesigneIdeas() {
         </div>
       </div>
       <div id='example4'>
-        <img src='https://images.pexels.com/photos/2100245/pexels-photo-2100245.jpeg' alt='' loading='lazy'></img>
+        <img src='pics/example-4.jpeg' alt='' loading='lazy'></img>
         <div>
           <h3>Lorem ipsum</h3>
           <p>
@@ -81,7 +81,7 @@ export default function DesigneIdeas() {
         </div>
       </div>
       <div id='example5'>
-        <img src='https://images.pexels.com/photos/997049/pexels-photo-997049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='' loading='lazy'></img>
+        <img src='pics/example-5.jpeg' alt='' loading='lazy'></img>
         <div>
           <h3>Lorem ipsum</h3>
           <p>

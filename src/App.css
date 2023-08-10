@@ -23,6 +23,12 @@
   background-color: rgb(63, 63, 63);
 }
 
+@-moz-document url-prefix() {
+  * {
+    scrollbar-color: rgb(44, 44, 44) rgba(126, 126, 126, 0.425);
+    scrollbar-width: thin;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
@@ -133,10 +139,9 @@ a {
   grid-column: 1/span 2;
 }
 #shop #shopping-list #cart .product div button {
-  width: -moz-min-content;
-  width: min-content;
-  height: -moz-min-content;
-  height: min-content;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
   background-color: rgb(204, 129, 129);
   color: rgb(0, 0, 0);
   border-radius: 3px;
@@ -281,6 +286,7 @@ a {
   padding: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 15px;
   border: 1px solid rgba(0, 0, 0, 0.377);
   background-color: #ffffff;
@@ -425,7 +431,7 @@ section {
 #left {
   width: 50%;
   flex-grow: 1;
-  background-image: url("https://images.pexels.com/photos/3932930/pexels-photo-3932930.jpeg");
+  background-image: url("../public/pics/start.jpeg");
   background-repeat: none;
   background-size: cover;
   background-position: 50% 78%;
@@ -501,7 +507,6 @@ section {
   width: 100%;
   margin: 50px 0 10px 0;
   padding: 30px 0;
-  scrollbar-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -585,7 +590,7 @@ section {
   left: 0;
   background-color: rgba(0, 0, 0, 0.153);
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   z-index: 99;
   visibility: hidden;
   transition: opacity 0.5s ease;
@@ -700,7 +705,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0 60px 0;
+  padding: 60px 0;
 }
 #reviews #review_container {
   padding: 40px;
@@ -999,17 +1004,30 @@ footer div a:hover, footer div a:active {
     min-width: 100% !important;
     border-radius: 0 !important;
   }
+  #newsletter {
+    padding: 0;
+  }
   #nl_form {
     width: 100% !important;
     height: -moz-max-content;
     height: max-content;
-    min-height: 80vh;
+    min-height: 100vh;
     justify-content: center;
     flex-direction: column;
     border-radius: 0 !important;
   }
+  #nl_form form {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
   #nl_form input {
-    width: 100% !important;
+    width: 90% !important;
     translate: 0 !important;
   }
   #shop > :first-child {

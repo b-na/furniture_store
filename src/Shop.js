@@ -59,13 +59,13 @@ function showCart(screen) {
       element.getElementsByClassName('amound')[0].innerHTML = amound - 1;
       element.getElementsByClassName('price')[0].innerHTML = convert((pic.price * (amound - 1)).toFixed(2));
     }
-    amound == 1 ? element.remove() : remove_one();
+    amound === 1 ? element.remove() : remove_one();
     let num = document.getElementById('inCart').getAttribute('numberOfItems');
     setNumberOfItems(num - 1);
     let sub = document.getElementById('subtotal').getAttribute('sub');
     console.log(sub)
     setSub(sub - Number(pic.price));
-    num == 1 && setShip(0);
+    num === 1 && setShip(0);
   }
 
   function removeAllFromShoppingCart( setSub, setShip, setNumberOfItems ) {

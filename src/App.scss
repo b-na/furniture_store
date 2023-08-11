@@ -41,9 +41,17 @@ $shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3
     }
 }
 
+#App {
+    overflow-x: hidden;
+}
+
 html {
+    width: 100vw;
+    height: max-content;
+    margin: 0;
     scroll-behavior: smooth;
-  }
+    overflow-x :hidden;
+}
 
 body {
     position: relative;
@@ -54,34 +62,34 @@ body {
 }
 
 a {
-    
     text-decoration: none;
 }
 
 #shop {
+    width: 10vw;
     position: absolute;
     pointer-events: none;
     top: 0;
     right: 0;
     z-index: 2;
     height: 100%;
+    color: black;
 
     >:first-child {
-        width: max-content;
         pointer-events: all;
         position: -webkit-sticky;
         position: sticky;
-        top: 10px;
+        top: 1rem;
+        right: 0;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
     
     #icon-cart {
-        margin-right: 10px;
-        width: max-content;
+        margin-right: 1rem;
         padding: 10px;
-        font-size: 30px;
+        font-size: 2rem;
         cursor: pointer;
         background-color: rgba($background, 0.8);
         border-radius: 2px;
@@ -91,8 +99,8 @@ a {
 
     #icon-cart:hover, #icon-cart:active {
         background-color: $background;
-        font-size: 35px;
-        margin-right: 7.5px;
+        font-size: 2.1rem;
+        margin-right: 1.1rem;
     }
 
     #inCart {
@@ -219,6 +227,7 @@ a {
 
                 button {
                     display: block;
+                    color: black;
                     float: right;
                     width: max-content;
                     background-color: rgb(245, 116, 116);
@@ -257,6 +266,7 @@ a {
         .payment button:nth-of-type(1) {
             background-color: $prime3;
             width: 100%;
+            color: black;
         }
         .payment button:last-of-type {
             background-color: $prime4;
@@ -349,8 +359,8 @@ a {
     top: 93vh;
     left: 100%;
     margin: 10px;
-    width: 25px;
-    height: 25px;
+    width: 2rem;
+    height: 2.2rem;
     fill: $dark;
     font-size: 1.7rem;
     transition: all 0.2s ease-in-out;
@@ -365,6 +375,7 @@ section {
 }
 
 #start {
+    width: 100%;
     position: relative;
     margin: 0;
     display: flex;
@@ -646,9 +657,8 @@ section {
 
 }
 
-
 #contact {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;

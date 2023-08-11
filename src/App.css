@@ -29,8 +29,17 @@
     scrollbar-width: thin;
   }
 }
+#App {
+  overflow-x: hidden;
+}
+
 html {
+  width: 100vw;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -47,29 +56,28 @@ a {
 }
 
 #shop {
+  width: 10vw;
   position: absolute;
   pointer-events: none;
   top: 0;
   right: 0;
   z-index: 2;
   height: 100%;
+  color: black;
 }
 #shop > :first-child {
-  width: -moz-max-content;
-  width: max-content;
   pointer-events: all;
   position: sticky;
-  top: 10px;
+  top: 1rem;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 #shop #icon-cart {
-  margin-right: 10px;
-  width: -moz-max-content;
-  width: max-content;
+  margin-right: 1rem;
   padding: 10px;
-  font-size: 30px;
+  font-size: 2rem;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
@@ -78,8 +86,8 @@ a {
 }
 #shop #icon-cart:hover, #shop #icon-cart:active {
   background-color: #ffffff;
-  font-size: 35px;
-  margin-right: 7.5px;
+  font-size: 2.1rem;
+  margin-right: 1.1rem;
 }
 #shop #inCart {
   visibility: hidden;
@@ -195,6 +203,7 @@ a {
 }
 #shop #shopping-list > :nth-child(3) div button {
   display: block;
+  color: black;
   float: right;
   width: -moz-max-content;
   width: max-content;
@@ -227,6 +236,7 @@ a {
 #shop #shopping-list .payment button:nth-of-type(1) {
   background-color: #d4b699;
   width: 100%;
+  color: black;
 }
 #shop #shopping-list .payment button:last-of-type {
   background-color: #754F44;
@@ -308,8 +318,8 @@ a {
   top: 93vh;
   left: 100%;
   margin: 10px;
-  width: 25px;
-  height: 25px;
+  width: 2rem;
+  height: 2.2rem;
   fill: rgb(19, 19, 19);
   font-size: 1.7rem;
   transition: all 0.2s ease-in-out;
@@ -324,6 +334,7 @@ section {
 }
 
 #start {
+  width: 100%;
   position: relative;
   margin: 0;
   display: flex;
@@ -583,7 +594,7 @@ section {
 }
 
 #contact {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;

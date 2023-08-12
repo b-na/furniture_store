@@ -98,11 +98,13 @@ function App() {
 
   useEffect(() => {
     let shop = document.getElementById('shop').classList;
+    let html = document.getElementsByTagName('html')[0];
     function toggle() { shop.toggle('smallScreen'); shop.toggle('bigScreen')}
     function screen_resize() {
       window.innerWidth > 470 ? setScreen('L') : setScreen('S');
       ((shop[0] === 'smallScreen' && screen === 'L') || (shop[0] === 'bigScreen' && screen === 'S')) && toggle();
-      console.log(shop[0] + ' + ' + screen )
+      console.log(shop[0])
+      shop[0] == 'smallScreen' ? html.style.overflowY = 'hidden' : html.style.overflowY = 'auto';
     }
     window.addEventListener('resize', screen_resize);
     return() => window.removeEventListener('resize', screen_resize);

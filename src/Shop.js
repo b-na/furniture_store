@@ -1,10 +1,15 @@
 function showCart(screen) {
-    let style = document.getElementById('shop').classList;
-  console.log(style[0])
+  let style = document.getElementById('shop').classList;
+  let html = document.getElementsByTagName('html')[0];
+  function handleSmallScreen() {
+    style.toggle('smallScreen');
+    html.style.overflowY = 'hidden';
+  }
   if(style[0] !== true) {
-    screen === 'L' ? style.toggle('bigScreen') : style.toggle('smallScreen')
+    screen === 'L' ? style.toggle('bigScreen') : handleSmallScreen();
   } else {
     style = '';
+    html.style.overflowY = 'auto';
   }
   }
   

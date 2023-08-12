@@ -42,11 +42,14 @@ function Nav() {
 
 function ContactUsVisToggle(visible) {
   let contact = document.getElementById('contact');
+  let html = document.getElementsByTagName('html')[0];
   if (visible) {
     contact.style.opacity='1';
     contact.style.visibility='visible';
+    html.style.overflowY = 'hidden';
   } else {
-    contact.style.opacity='0'
+    contact.style.opacity='0';
+    html.style.overflowY='auto'
     setTimeout(() => contact.style.visibility='hidden', 500)
     ;
   }

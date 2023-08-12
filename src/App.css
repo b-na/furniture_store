@@ -29,10 +29,6 @@
     scrollbar-width: thin;
   }
 }
-#App {
-  overflow-x: hidden;
-}
-
 html {
   width: 100vw;
   height: -moz-max-content;
@@ -56,20 +52,12 @@ a {
 }
 
 #shop {
-  width: 10vw;
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  height: 100%;
-  color: black;
-}
-#shop > :first-child {
-  pointer-events: all;
-  position: sticky;
+  position: fixed;
   top: 1rem;
   right: 0;
+  float: right;
+  z-index: 2;
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -313,20 +301,28 @@ a {
 }
 
 #arrow-up {
+  height: calc(100% - 100vh);
+  width: 3rem;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  top: 100vh;
+  right: 0;
+}
+#arrow-up svg {
   position: sticky;
-  padding: 15px;
+  padding: 0.5rem;
   top: 93vh;
-  left: 100%;
-  margin: 10px;
-  width: 2rem;
-  height: 2.2rem;
+  right: 5%;
+  float: right;
   fill: rgb(19, 19, 19);
-  font-size: 1.7rem;
+  font-size: 3rem;
   transition: all 0.2s ease-in-out;
+  z-index: 98;
 }
 
-#arrow-up:hover {
-  top: 90vh;
+#arrow-up svg:hover {
+  top: 92vh;
 }
 
 section {

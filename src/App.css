@@ -277,6 +277,7 @@ a {
   width: 100%;
   font-size: 35px;
   margin: 10px 5px;
+  cursor: pointer;
 }
 #shop.smallScreen #shopping-list #cart {
   height: 45vh;

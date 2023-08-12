@@ -103,7 +103,6 @@ function App() {
     function screen_resize() {
       window.innerWidth > 470 ? setScreen('L') : setScreen('S');
       ((shop[0] === 'smallScreen' && screen === 'L') || (shop[0] === 'bigScreen' && screen === 'S')) && toggle();
-      console.log(shop[0])
       shop[0] == 'smallScreen' ? html.style.overflowY = 'hidden' : html.style.overflowY = 'auto';
     }
     window.addEventListener('resize', screen_resize);

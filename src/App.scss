@@ -64,14 +64,19 @@ a {
 #shop {
     position: fixed;
     pointer-events: none;
-    top: 1rem;
+    top: 0;
+    padding: 1rem 0;
     right: 0;
     float: right;
     z-index: 2;
     color: black;
     display: flex;
+    height: max-content;
+    max-height: 95vh;
+    overflow-y: auto;
     flex-direction: column;
     align-items: flex-end;
+    transition: all 0.3s ease;
 
     * {
         pointer-events: all;
@@ -82,14 +87,14 @@ a {
         padding: 10px;
         font-size: 2rem;
         cursor: pointer;
-        background-color: rgba($background, 0.8);
+        background-color: rgba(rgb(205, 205, 205), 0.5);
         border-radius: 2px;
         box-shadow: $shadow;
         transition: all 0.2s ease;
     }
 
     #icon-cart:hover, #icon-cart:active {
-        background-color: $background;
+        background-color: rgb(241, 241, 241);
         font-size: 2.1rem;
         margin-right: 1.1rem;
     }
@@ -100,11 +105,12 @@ a {
         width: 20px;
         height: 20px;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         background-color: $prime2;
         color: $background;
-        top: -22px;
+        top: 0;
         right: 5px;
         border-radius: 50%;
         transition: all 0.5s ease;
@@ -118,27 +124,29 @@ a {
             position: relative;
             width: 100%;
             height: 300px;
-            background-color: rgb(231, 231, 231);
+            background-color: rgb(163, 146, 146);
             overflow-y: scroll;
             transition: all 0.2s ease-in-out;
-            border: 1px solid rgba(0, 0, 0, 0.116);
+            border: 1px solid rgba(84, 84, 84, 0.225);
 
             .product {
                 position: relative;
                 width: 100%;
-                min-height: 25%;
+                min-height: 20%;
                 height: max-content;
-                padding: 10px;
+                padding: 5px;
                 display: flex;
+                align-items: center;
                 flex-direction: row;
                 gap: 15px;
-                border: 1px solid rgba(0, 0, 0, 0.377);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.502);
                 background-color: $background;
 
                 img {
                     height: 100%;
                     width: 20%;
                     object-fit: cover;
+                    border: 1px solid rgba(0, 0, 0, 0.18);
                 }
 
                 div {
@@ -157,10 +165,10 @@ a {
                     width: 1.2rem;
                     height: 1.2rem;
                     padding: 0;
-                    background-color: rgb(204, 129, 129);
+                    background-color: rgb(208, 98, 98);
                     color: rgb(0, 0, 0);
                     border-radius: 3px;
-                    border: 1px solid rgba(0, 0, 0, 0.397);
+                    border: 1px solid rgba(0, 0, 0, 0.684);
                     margin: 5px;
                     cursor: pointer;
                     font-weight: bold;
@@ -197,6 +205,7 @@ a {
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             width: 100%;
             height: 100%;
             top: 0;
@@ -206,6 +215,7 @@ a {
         >:nth-child(3) {
             background-color: $background;
             padding: 10px;
+            height: max-content;
 
             strong {
                 float: right;
@@ -269,22 +279,31 @@ a {
 
 #shop.bigScreen {
 
+    
+    >::-webkit-scrollbar {
+        display: none !important;
+    }
+
     #shopping-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 400px;
     height: max-content;
-    max-height: 85vh;
+    min-height: 100%;
     height: max-content;
-    background-color: rgba($background, 0.8);
+    background-color: rgba(113, 113, 113, 0.325);
     border-radius: 2px;
     border: 5px solid rgba(255, 255, 255, 0.185);
     box-shadow: none;
     overflow-y: auto;
     transition: all .5s ease;
-    margin-right: 10px;
+    margin-right: 1rem;
     margin-top: 1px;
+
+    #cart {
+        min-height: 300px;
+    }
 
     #x-shopping-list {
         display: none;
@@ -293,31 +312,38 @@ a {
 }
 
 #shop.smallScreen {
+    width: 100vw;
+    min-height: 100vh;
+    height: max-content !important;
+
+    >::-webkit-scrollbar {
+        display: none !important;
+    }
 
     #shopping-list {
         position: absolute;
-        top: -1rem;
+        top: 0;
         right: 0;
+        left: 0;
         background-color: $background;
-        padding: 10px 20px 80px 20px;
+        padding: 10px 5px 30px 5px;
         width: 100vw;
-        min-height: 100vh;
-        height: max-content;
-        overflow: hidden auto;
+        height: 100vh;
+        overflow: hidden auto !important;
         margin: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
 
         #x-shopping-list {
             display: block;
+            height: 4vh;
             width: 100%;
             font-size: 35px;
             margin: 10px 5px;
             cursor: pointer;
         }
         #cart {
-            height: 45vh;
+            min-height: 45vh;
 
             .product {
                 min-height: 30%;
@@ -336,6 +362,16 @@ a {
                     object-fit: cover;
                 }
             }
+        }
+
+        #to_pay {
+            width: 100%;
+            min-height: 27vh;
+        }
+        .payment {
+            width: 100%;
+            height: max-content;
+            min-height: 30vh;
         }
 
     }
@@ -523,7 +559,7 @@ section {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    padding: 30px;
+    padding: 30px 30px 60px 30px;
     transition: all 0.2s ease;
     
     >div:not(.header-container) {
@@ -575,7 +611,7 @@ section {
     height: max-content;
     min-height: 100vh;
     width: 100%;
-    margin: 50px 0 10px 0;
+    margin: 10px 0 10px 0;
     padding: 30px 0;
     display: flex;
     flex-direction: column;
@@ -594,6 +630,7 @@ section {
     grid-template-columns: repeat(11, auto);
     gap: 25px 50px;
     scroll-behavior: smooth;
+    box-shadow: $shadow;
     
     .product {
         position: relative;
@@ -1110,11 +1147,13 @@ footer {
             grid-row: unset !important;
             grid-column: unset !important;
         }
-    
+
+        #reviews {
+            min-height: 100vh !important;
+        }
 
         #review_container {
-            min-width: 100% !important;
-            border-radius: 0 !important;
+            min-width: 95% !important;
         }
 
     #newsletter {
@@ -1125,7 +1164,7 @@ footer {
     #nl_form{
         width: 100% !important;
         height: max-content;
-        min-height: 100vh;
+        min-height: 90vh;
         justify-content: center;
         flex-direction: column;
         border-radius: 0 !important;
@@ -1144,6 +1183,11 @@ footer {
             width: 90% !important;
             translate: 0 !important;
         }
+    }
+
+    footer {
+        min-height: max-content;
+        height: 10vh;
     }
 
     #shop {

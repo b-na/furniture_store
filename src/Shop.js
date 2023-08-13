@@ -4,7 +4,7 @@ function showCart(screen) {
 
   if(style[0] === undefined) {
     screen === 'L' ? style.toggle('bigScreen') : style.toggle('smallScreen');
-    html.style.overflowY = 'hidden';
+    html.style.overflowY = screen === 'S' ? 'hidden' : 'auto';
   } else {
     style.remove(style[0]);
     html.style.overflowY = 'auto';

@@ -119,7 +119,7 @@ function App() {
             <div id='cart'>
               <div className='isEmpty'>Your shopping cart is empty</div>
             </div>
-            <div>
+            <div id='to_pay'>
               <div><button onClick={() => removeAllFromShoppingCart( setSub, setShip, setnumber_of_items )}><FontAwesomeIcon id='trash_can' icon={faTrashCan} /></button></div>
               <p>Subtotal: <strong>€</strong><strong id='subtotal' sub={sub} className='price'>{convert(sub)}</strong></p>
               <p>Shipping: <strong>€</strong><strong id='shipping' ship={ship} className='price'>{convert(ship)}</strong></p>

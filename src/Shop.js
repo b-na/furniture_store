@@ -1,14 +1,12 @@
 function showCart(screen) {
   let style = document.getElementById('shop').classList;
   let html = document.getElementsByTagName('html')[0];
-  function handleSmallScreen() {
-    style.toggle('smallScreen');
-    html.style.overflowY = 'hidden';
-  }
-  if(style[0] !== true) {
-    screen === 'L' ? style.toggle('bigScreen') : handleSmallScreen();
+
+  if(style[0] === undefined) {
+    screen === 'L' ? style.toggle('bigScreen') : style.toggle('smallScreen');
+    html.style.overflowY = screen === 'S' ? 'hidden' : 'auto';
   } else {
-    style = '';
+    style.remove(style[0]);
     html.style.overflowY = 'auto';
   }
   }
@@ -70,7 +68,7 @@ function showCart(screen) {
     let sub = document.getElementById('subtotal').getAttribute('sub');
     console.log(sub)
     setSub(sub - Number(pic.price));
-    num === 1 && setShip(0);
+    num === 1 && removeAllFromShoppingCart( setSub, setShip, setnumber_of_items );
   }
 
   function removeAllFromShoppingCart( setSub, setShip, setnumber_of_items ) {

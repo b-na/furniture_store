@@ -103,8 +103,7 @@ function App() {
     function screen_resize() {
       window.innerWidth > 470 ? setScreen('L') : setScreen('S');
       ((shop[0] === 'smallScreen' && screen === 'L') || (shop[0] === 'bigScreen' && screen === 'S')) && toggle();
-      console.log(shop[0])
-      shop[0] == 'smallScreen' ? html.style.overflowY = 'hidden' : html.style.overflowY = 'auto';
+      shop[0] === 'smallScreen' ? html.style.overflowY = 'hidden' : html.style.overflowY = 'auto';
     }
     window.addEventListener('resize', screen_resize);
     return() => window.removeEventListener('resize', screen_resize);
@@ -120,7 +119,7 @@ function App() {
             <div id='cart'>
               <div className='isEmpty'>Your shopping cart is empty</div>
             </div>
-            <div>
+            <div id='to_pay'>
               <div><button onClick={() => removeAllFromShoppingCart( setSub, setShip, setnumber_of_items )}><FontAwesomeIcon id='trash_can' icon={faTrashCan} /></button></div>
               <p>Subtotal: <strong>€</strong><strong id='subtotal' sub={sub} className='price'>{convert(sub)}</strong></p>
               <p>Shipping: <strong>€</strong><strong id='shipping' ship={ship} className='price'>{convert(ship)}</strong></p>

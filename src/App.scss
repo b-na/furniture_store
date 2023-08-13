@@ -17,7 +17,7 @@ $shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3
 *::-webkit-scrollbar{
     height: 7px;
     width: 7px;
-    background-color: rgba(53, 53, 53, 0.425);
+    background-color: rgba(102, 102, 102, 0.212);
 }
 
 *::-webkit-scrollbar-thumb{
@@ -30,7 +30,7 @@ $shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3
 }
   
 *::-webkit-scrollbar-button:single-button:hover, *::-webkit-scrollbar-thumb:hover{
-  background-color: rgb(63, 63, 63);
+  background-color: rgb(91, 73, 59);
 }
 
 @-moz-document url-prefix() {

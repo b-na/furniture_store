@@ -68,7 +68,7 @@ function showCart(screen) {
     let sub = document.getElementById('subtotal').getAttribute('sub');
     console.log(sub)
     setSub(sub - Number(pic.price));
-    num === 1 && setShip(0);
+    num === 1 && removeAllFromShoppingCart( setSub, setShip, setnumber_of_items );
   }
 
   function removeAllFromShoppingCart( setSub, setShip, setnumber_of_items ) {

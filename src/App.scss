@@ -41,9 +41,6 @@ $shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3
     }
 }
 
-#App {
-    overflow-x: hidden;
-}
 
 html {
     width: 100vw;
@@ -416,6 +413,10 @@ section {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @media only screen and (max-width: 400px) {
+                font-size: 15vw;
+            }
             
         }
     
@@ -521,10 +522,11 @@ section {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    padding: 30px;
+    padding: 30px 0;
     transition: all 0.2s ease;
     
     >div:not(.header-container) {
+        width: 95%;
         max-width: 85vw;
         height: 60vh;
         display: flex;
@@ -548,6 +550,10 @@ section {
 
             p, h1 {
                 text-align: justify;
+            }
+
+            @media only screen and (max-width: 350px) {
+                padding: 20px;                
             }
 
         }
@@ -790,8 +796,8 @@ section {
 
     #review_container {
         padding: 40px;
-        width: 40%;
-        min-width: 600px;
+        width: 100%;
+        max-width: 600px;
         height: max-content;
         background-color: $background;
         border-radius: 5px;
@@ -867,8 +873,20 @@ section {
             button:hover, button:active {
                 background-color: $prime5;
             }
-
         }
+
+            @media only screen and (max-width: 380px){
+                padding: 40px 20px;
+
+                >div {    
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    img {margin: 0;}
+                    p {text-align: center;}
+                }
+            }
     }
     
     #review_container.fadeIn {
@@ -931,14 +949,22 @@ section {
 
 footer {
     width: 100%;
-    height: 20vh;
+    min-height: 20vh;
+    height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
+    div {line-height: 3rem;}
+
+    p {
+        margin: 20px;
+    }
 
     div a {
         color: rgb(211, 175, 156);
-        margin: 10px;
+        margin: 20px;
         font-size: 1.8rem;
         transition: all 0.3s ease-in-out;
     }
@@ -960,7 +986,7 @@ footer {
     100% { opacity: 0; }
 }
 
-@media screen and (max-width: 720px) {
+@media only screen and (max-width: 720px) {
 
     #start {
         flex-direction: column !important;
@@ -990,7 +1016,7 @@ footer {
     }
 
     #review_container {
-        min-width: 90% !important;
+        width: 95% !important;
     }
 
     #nl_form{
@@ -1033,7 +1059,7 @@ footer {
 
 }
 
-@media screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     #design_ideas {
         flex-direction: column !important;
 
@@ -1081,7 +1107,7 @@ footer {
     
 }
 
-@media screen and (max-width: 470px) {
+@media only screen and (max-width: 470px) {
         #product_container {
             grid-template-columns: repeat(1, auto);
             grid-template-rows: repeat(22, auto);
@@ -1107,12 +1133,6 @@ footer {
             grid-row: unset !important;
             grid-column: unset !important;
         }
-    
-
-        #review_container {
-            min-width: 100% !important;
-            border-radius: 0 !important;
-        }
 
     #newsletter {
         padding: 0;
@@ -1122,7 +1142,7 @@ footer {
     #nl_form{
         width: 100% !important;
         height: max-content;
-        min-height: 100vh;
+        min-height: 80vh;
         justify-content: center;
         flex-direction: column;
         border-radius: 0 !important;
@@ -1140,6 +1160,15 @@ footer {
         input{
             width: 90% !important;
             translate: 0 !important;
+        }
+    }
+
+    footer {
+        background-color: #42262d;
+        color: $prime1;
+
+        div a {
+            color: $prime1;
         }
     }
 
@@ -1180,4 +1209,12 @@ footer {
             height: max-content;
         }
     }
+}
+
+@media only screen and (max-width: 800px) {
+    *::-webkit-scrollbar {display: none;}
+}
+
+@media only screen and (max-width: 350px) {
+    h2 {font-size: 10vw !important;}
 }

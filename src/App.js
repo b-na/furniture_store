@@ -42,27 +42,30 @@ function Nav() {
 
 function ContactUsVisToggle(visible) {
   let contact = document.getElementById('contact');
+  let html = document.getElementsByTagName('html')[0];
   if (visible) {
     contact.style.opacity='1';
     contact.style.visibility='visible';
+    html.style.overflowY = 'hidden';
   } else {
-    contact.style.opacity='0'
+    contact.style.opacity='0';
+    html.style.overflowY='auto'
     setTimeout(() => contact.style.visibility='hidden', 500)
     ;
   }
 }
 
-function Gallery({pic, id, setSub, setShip, sub, setNumberOfItems, numberOfItems}) {
+function Gallery({pic, id, setSub, setShip, sub, setnumber_of_items, number_of_items}) {
   return(
   <div id={id} className='product' >
     <img src={pic.link} alt='' loading='lazy'></img>
-    <FontAwesomeIcon className='add' icon={faPlus} onClick={() => addToShoppingCart(pic, id, convert, setSub, setShip, sub, setNumberOfItems, numberOfItems)}/>
+    <FontAwesomeIcon className='add' icon={faPlus} onClick={() => addToShoppingCart(pic, id, convert, setSub, setShip, sub, setnumber_of_items, number_of_items)}/>
     <figcaption><p>{pic.caption}</p><strong className='price'>{convert(pic.price)}</strong><strong> €</strong></figcaption>
   </div>
   )
 }
 
-function Deco() {
+function App() {
   
   let random = useMemo(() => {
     let arr = [];
@@ -76,7 +79,7 @@ function Deco() {
   const [random_review, setRandom_review] = useState(0);
   const [sub, setSub] = useState(0);
   const [ship, setShip] = useState(0);
-  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [number_of_items, setnumber_of_items] = useState(0);
   
   const [screen, setScreen] = useState(window.innerWidth > 470 ? 'L' : 'S');
 
@@ -95,11 +98,12 @@ function Deco() {
 
   useEffect(() => {
     let shop = document.getElementById('shop').classList;
+    let html = document.getElementsByTagName('html')[0];
     function toggle() { shop.toggle('smallScreen'); shop.toggle('bigScreen')}
     function screen_resize() {
       window.innerWidth > 470 ? setScreen('L') : setScreen('S');
       ((shop[0] === 'smallScreen' && screen === 'L') || (shop[0] === 'bigScreen' && screen === 'S')) && toggle();
-      console.log(shop[0] + ' + ' + screen )
+      shop[0] === 'smallScreen' ? html.style.overflowY = 'hidden' : html.style.overflowY = 'auto';
     }
     window.addEventListener('resize', screen_resize);
     return() => window.removeEventListener('resize', screen_resize);
@@ -108,16 +112,15 @@ function Deco() {
   return (
     <div className="App" id='App'>
       <div id='shop' className=''>
-        <div>
           <FontAwesomeIcon id='icon-cart' icon={faCartShopping} onClick={() => showCart(screen)}/>
-          <p id='inCart' style={{visibility: (numberOfItems > 0 ? 'visible' : 'hidden')}} numberOfItems={numberOfItems}>{numberOfItems}</p>
+          <p id='inCart' style={{visibility: (number_of_items > 0 ? 'visible' : 'hidden')}} number_of_items={number_of_items}>{number_of_items}</p>
           <div id='shopping-list'>
             <FontAwesomeIcon id='x-shopping-list' onClick={() => showCart()} icon={faCircleXmark} />
             <div id='cart'>
               <div className='isEmpty'>Your shopping cart is empty</div>
             </div>
-            <div>
-              <div><button onClick={() => removeAllFromShoppingCart( setSub, setShip, setNumberOfItems )}><FontAwesomeIcon id='trash_can' icon={faTrashCan} /></button></div>
+            <div id='to_pay'>
+              <div><button onClick={() => removeAllFromShoppingCart( setSub, setShip, setnumber_of_items )}><FontAwesomeIcon id='trash_can' icon={faTrashCan} /></button></div>
               <p>Subtotal: <strong>€</strong><strong id='subtotal' sub={sub} className='price'>{convert(sub)}</strong></p>
               <p>Shipping: <strong>€</strong><strong id='shipping' ship={ship} className='price'>{convert(ship)}</strong></p>
               <hr/>
@@ -128,7 +131,6 @@ function Deco() {
               <button onClick={handleSubmit}>Pay</button>
             </div>
           </div>
-        </div>
       </div>
       <section id='start'>
           <div id='left' className='content-box'></div>
@@ -151,19 +153,19 @@ function Deco() {
           <FontAwesomeIcon id='x' onClick={() => ContactUsVisToggle(false)} icon={faCircleXmark} />
           <form action="" method="post" onSubmit={handleSubmit}>
               <h3 style={{fontVariant:'small-caps'}}>Contact Us</h3>
-              <label for='fname'>First Name <sup>*</sup>:</label>
+              <label htmlFor='fname'>First Name <sup>*</sup>:</label>
               <input type="text" id="fname" name="fname" placeholder='Your Name' required/>
-              <label for='lname'>Last Name:</label>
+              <label htmlFor='lname'>Last Name:</label>
               <input type="text" id="lname" name="lname" placeholder='Your Last Name'/>
-              <label for='email'>Email <sup>*</sup>:</label>
+              <label htmlFor='email'>Email <sup>*</sup>:</label>
               <input type="email" id="email" name="email" placeholder='Your Email' required/>
-              <label for='subject'>Subject <sup>*</sup>:</label>
+              <label htmlFor='subject'>Subject <sup>*</sup>:</label>
               <textarea id="subject" minLength={10} maxLength={500} name="subject" placeholder="Write something.." required></textarea>
               <input id='submit' type="submit" value="Send"/>
           </form>
         </div>
         </section>
-      <a id='arrow-up' href='#App'><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">{/* <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}<path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg></a>
+      <div id='arrow-up'><a href='#App'><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">{/* <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}<path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg></a></div>
       <section id='design_ideas'>
       <div className='header-container'><h2>Design Ideas</h2></div>
         <DesigneIdeas/>
@@ -171,7 +173,7 @@ function Deco() {
       <section id='our_products'>
         <div className='header-container'><h2>Our Products</h2></div>
         <div id='product_container'>
-          {prod_gallery.map((pic, i)=> <Gallery pic={pic} id={i} setSub={setSub} setShip={setShip} sub={sub} setNumberOfItems={setNumberOfItems} numberOfItems={numberOfItems} key={i}/>)}{/* beliani.de */}
+          {prod_gallery.map((pic, i)=> <Gallery pic={pic} id={i} setSub={setSub} setShip={setShip} sub={sub} setnumber_of_items={setnumber_of_items} number_of_items={number_of_items} key={i}/>)}{/* beliani.de */}
           <a id='more' href='#our_products' onClick={(e) => { handleSubmit(e) }}><div><strong>See more</strong></div></a>
         </div>
       </section>
@@ -208,4 +210,4 @@ function Deco() {
   );
 }
 
-export default Deco;
+export default App;

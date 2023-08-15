@@ -1,14 +1,17 @@
 function showCart(screen) {
-    let style = document.getElementById('shop').classList;
-  console.log(style[0])
-  if(style[0] !== true) {
-    screen === 'L' ? style.toggle('bigScreen') : style.toggle('smallScreen')
+  let style = document.getElementById('shop').classList;
+  let html = document.getElementsByTagName('html')[0];
+
+  if(style[0] === undefined) {
+    screen === 'L' ? style.toggle('bigScreen') : style.toggle('smallScreen');
+    html.style.overflowY = screen === 'S' ? 'hidden' : 'auto';
   } else {
-    style = '';
+    style.remove(style[0]);
+    html.style.overflowY = 'auto';
   }
   }
   
-  function Item(pic, id, convert, setNumberOfItems, setSub, setShip) {
+  function Item(pic, id, convert, setnumber_of_items, setSub, setShip) {
     let item = document.createElement('div');
       item.id = 'item-' + id;
       item.className = 'product inCart';
@@ -20,7 +23,7 @@ function showCart(screen) {
       figcaption.innerHTML = pic.caption;
       let remove_button = document.createElement('button');
       remove_button.innerText = '-';
-      remove_button.onclick = () => removeOneFromShoppingCart(id, pic, convert, setNumberOfItems, setSub, setShip);
+      remove_button.onclick = () => removeOneFromShoppingCart(id, pic, convert, setnumber_of_items, setSub, setShip);
       let price = document.createElement('p');
       price.innerHTML = `<strong class='price'>${convert(pic.price)}</strong>
         <strong> €</strong>`
@@ -31,7 +34,7 @@ function showCart(screen) {
     return item;
   }
   
-  function addToShoppingCart(pic, id, convert, setSub, setShip, sub, setNumberOfItems, numberOfItems) {
+  function addToShoppingCart(pic, id, convert, setSub, setShip, sub, setnumber_of_items, number_of_items) {
     document.getElementsByClassName('isEmpty')[0].style.display = 'none';
     let element = document.getElementById('item-' + id);
     let amound = 1;
@@ -42,37 +45,37 @@ function showCart(screen) {
       element.getElementsByClassName('amound')[0].style.visibility = 'visible'
       element.getElementsByClassName('price')[0].innerHTML = convert((pic.price * amound).toFixed(2));
     } else {
-      let item = Item(pic, id, convert, setNumberOfItems, setSub, setShip)
+      let item = Item(pic, id, convert, setnumber_of_items, setSub, setShip)
       document.getElementById('cart').appendChild(item);
     }
     setSub(sub + Number(pic.price)); 
     setShip(5);
-    setNumberOfItems(numberOfItems + 1);
+    setnumber_of_items(number_of_items + 1);
   }
   
 
-  function removeOneFromShoppingCart (id, pic, convert, setNumberOfItems, setSub, setShip){
+  function removeOneFromShoppingCart (id, pic, convert, setnumber_of_items, setSub, setShip){
     let element = document.getElementById('item-' + id);
-    let amound = element.getAttribute('amound');
+    let amound = Number(element.getAttribute('amound'));
     function remove_one() {
       element.setAttribute('amound', amound - 1); 
       element.getElementsByClassName('amound')[0].innerHTML = amound - 1;
       element.getElementsByClassName('price')[0].innerHTML = convert((pic.price * (amound - 1)).toFixed(2));
     }
     amound === 1 ? element.remove() : remove_one();
-    let num = document.getElementById('inCart').getAttribute('numberOfItems');
-    setNumberOfItems(num - 1);
+    let num = Number(document.getElementById('inCart').getAttribute('number_of_items'));
+    setnumber_of_items(num - 1);
     let sub = document.getElementById('subtotal').getAttribute('sub');
     console.log(sub)
     setSub(sub - Number(pic.price));
-    num === 1 && setShip(0);
+    num === 1 && removeAllFromShoppingCart( setSub, setShip, setnumber_of_items );
   }
 
-  function removeAllFromShoppingCart( setSub, setShip, setNumberOfItems ) {
+  function removeAllFromShoppingCart( setSub, setShip, setnumber_of_items ) {
     document.getElementById('cart').innerHTML = '<div class="isEmpty" style="display: flex;">Your shopping cart is empty</div>';
     setShip(0);
     setSub(0);
-    setNumberOfItems(0)
+    setnumber_of_items(0)
   }
 
   export { showCart, addToShoppingCart, removeAllFromShoppingCart}

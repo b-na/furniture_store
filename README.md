@@ -36,7 +36,7 @@ Explore the live demo of the Furniture Store Website: [https://b-na.github.io/fu
 
 - HTML5
 - CSS3
-- SCSS
+- SASS
 - JavaScript
 - React
 
